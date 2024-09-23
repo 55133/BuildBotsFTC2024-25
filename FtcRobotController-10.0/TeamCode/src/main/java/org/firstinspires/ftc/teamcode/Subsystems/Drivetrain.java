@@ -1,10 +1,6 @@
 package org.firstinspires.ftc.teamcode.Subsystems;
 
-import com.arcrobotics.ftclib.controller.PIDController;
-import com.arcrobotics.ftclib.geometry.Pose2d;
-import com.arcrobotics.ftclib.geometry.Rotation2d;
-import com.arcrobotics.ftclib.geometry.Transform2d;
-import com.arcrobotics.ftclib.geometry.Translation2d;
+
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
@@ -23,11 +19,10 @@ private DcMotor backLeft = null;
 private DcMotor backRight = null;
 
 Telemetry telemetry;
-Pose2d currentpose;
 
 public Drivetrain(HardwareMap hardwareMap, Telemetry tele)
  {
-     telemetry = tele
+     telemetry = tele;
 
      frontLeft = hardwareMap.get(DcMotorEx.class, "frontLeft");
      frontRight = hardwareMap.get(DcMotorEx.class, "frontRight");

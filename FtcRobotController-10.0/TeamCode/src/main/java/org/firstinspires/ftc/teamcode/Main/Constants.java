@@ -6,7 +6,7 @@ import java.io.File;
 
 public class Constants {
     public static File classification_model;
-    public static File ValueSaver = new;
+    public static File ValueSaver;
 
 
     public static final byte frontLeftPort = 0;
