@@ -29,8 +29,8 @@ public Drivetrain(HardwareMap hardwareMap, Telemetry tele)
      backLeft = hardwareMap.get(DcMotorEx.class, "backLeft");
      backRight = hardwareMap.get(DcMotorEx.class, "backRight");
 
-     //The left side of the robot will drive in reverse, so double check this code:
-     frontLeft.setDirection(DcMotor.Direction.REVERSE);
+     //The left side of the robot (frontLeft and backLeft) will drive in reverse, so double check this code:
+     backRight.setDirection(DcMotor.Direction.REVERSE);
      backLeft.setDirection(DcMotor.Direction.REVERSE);
  }
 
