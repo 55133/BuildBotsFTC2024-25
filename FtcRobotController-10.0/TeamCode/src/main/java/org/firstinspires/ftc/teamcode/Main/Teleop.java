@@ -49,4 +49,9 @@ public class Teleop extends OpMode
         mode = Robot_Mode.TELEOP_RUNNING;
         telemetry.update();
     }
+
+    @Override
+    public void stop() {
+        
+    }
 }
