@@ -74,7 +74,7 @@ public class Teleop extends OpMode
 
     @Override
     public void stop() {
-
+    mode = Robot_Mode.DISABLED;
     }
 
 }
