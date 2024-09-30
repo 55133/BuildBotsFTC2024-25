@@ -9,6 +9,7 @@ import org.firstinspires.ftc.teamcode.Subsystems.Claw;
 import org.firstinspires.ftc.teamcode.Subsystems.Drivetrain;
 import org.firstinspires.ftc.teamcode.Subsystems.Hinge;
 import org.firstinspires.ftc.teamcode.Subsystems.Lift;
+import com.qualcomm.robotcore.hardware.CRServo;
 
 import java.io.BufferedInputStream;
 import java.io.File;
@@ -30,16 +31,21 @@ public class Teleop extends OpMode
 
     Robot_Mode mode;
 
+    private CRServo servo1;
+    private CRServo servo2;
+
     @Override
     public void init()
     {
-    claw = new Claw(hardwareMap);
-    drivetrain = new Drivetrain(hardwareMap, telemetry);
-    hinge = new Hinge(hardwareMap);
-    lift = new Lift(hardwareMap, telemetry);
-    system = new System(telemetry);
+        claw = new Claw(hardwareMap);
+        drivetrain = new Drivetrain(hardwareMap, telemetry);
+        hinge = new Hinge(hardwareMap);
+        lift = new Lift(hardwareMap, telemetry);
+        system = new System(telemetry);
+        servo1 = hardwareMap.crservo.get("servo1");
+        servo2 = hardwareMap.crservo.get("servo2");
 
-    mode = Robot_Mode.TELEOP_STARTING;
+        mode = Robot_Mode.TELEOP_STARTING;
         telemetry.addData("Status: ", "Initialized");
         telemetry.addData("Robot Mode: ", mode);
     }
@@ -61,10 +67,14 @@ public class Teleop extends OpMode
 
         drivetrain.setPowers(frontLeftPower,frontRightPower,backLeftPower,backRightPower);
 
+        servo1.setPower(1);
+        servo2.setPower(1);
+
     }
 
     @Override
     public void stop() {
-        
+
     }
+
 }

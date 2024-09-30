@@ -23,11 +23,11 @@ public class Lift {
     {
         telemetry = tele;
 
-        slideLeft = hardwareMap.get(DcMotorEx.class, "slideLeft");
-        slideRight = hardwareMap.get(DcMotorEx.class, "slideRight");
+      //  slideLeft = hardwareMap.get(DcMotorEx.class, "slideLeft");
+       // slideRight = hardwareMap.get(DcMotorEx.class, "slideRight");
 
         //The left slide of the lift will drive in reverse:
-        slideLeft.setDirection(DcMotor.Direction.REVERSE);
+       // slideLeft.setDirection(DcMotor.Direction.REVERSE);
 
     }
 

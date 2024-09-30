@@ -11,7 +11,7 @@ public class Hinge {
     private boolean isDown;
     public Hinge(HardwareMap hardwareMap)
     {
-        coral = hardwareMap.get(Servo.class, "coral");
+      //  coral = hardwareMap.get(Servo.class, "coral");
         isDown = false;
     }
 

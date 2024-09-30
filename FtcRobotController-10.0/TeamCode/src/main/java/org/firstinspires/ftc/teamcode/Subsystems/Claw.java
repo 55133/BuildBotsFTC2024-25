@@ -12,7 +12,7 @@ public class Claw {
 private boolean isOpen;
 public Claw(HardwareMap hardwareMap)
 {
-    snappy = hardwareMap.get(Servo.class, "snappy");
+    //snappy = hardwareMap.get(Servo.class, "snappy");
     isOpen = false;
 }
 
