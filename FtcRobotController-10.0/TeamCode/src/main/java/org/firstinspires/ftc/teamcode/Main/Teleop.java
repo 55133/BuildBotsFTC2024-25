@@ -42,8 +42,7 @@ public class Teleop extends OpMode
         hinge = new Hinge(hardwareMap);
         lift = new Lift(hardwareMap, telemetry);
         system = new System(telemetry);
-        servo1 = hardwareMap.crservo.get("servo1");
-        servo2 = hardwareMap.crservo.get("servo2");
+
 
         mode = Robot_Mode.TELEOP_STARTING;
         telemetry.addData("Status: ", "Initialized");

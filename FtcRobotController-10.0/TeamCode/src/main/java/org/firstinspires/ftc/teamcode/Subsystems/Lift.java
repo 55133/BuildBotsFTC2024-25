@@ -13,8 +13,7 @@ import org.firstinspires.ftc.teamcode.Main.Constants;
 
 public class Lift {
 
-    private DcMotor slideLeft = null;
-    private DcMotor slideRight = null;
+    private DcMotor slider;
 
 
     Telemetry telemetry;
@@ -23,18 +22,26 @@ public class Lift {
     {
         telemetry = tele;
 
-      //  slideLeft = hardwareMap.get(DcMotorEx.class, "slideLeft");
-       // slideRight = hardwareMap.get(DcMotorEx.class, "slideRight");
+        slider.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        slider.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+
+      slider = hardwareMap.get(DcMotorEx.class, "slider");
+
 
         //The left slide of the lift will drive in reverse:
        // slideLeft.setDirection(DcMotor.Direction.REVERSE);
 
     }
 
-    public void setPowers(double pfl, double pfr)
+    public void runToPosition(int pos){
+
+        
+    }
+
+    public void setPower(double pfl)
     {
-        slideLeft.setPower(pfl);
-        slideRight.setPower(pfr);
+        slider.setPower(pfl);
+
 
 
 
