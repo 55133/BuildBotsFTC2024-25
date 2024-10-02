@@ -35,4 +35,9 @@ public void spit(double pow){
 
     }
 
+public void stop(){
+    servo1.setPower(0);
+    servo2.setPower(0);
+}
+
 }

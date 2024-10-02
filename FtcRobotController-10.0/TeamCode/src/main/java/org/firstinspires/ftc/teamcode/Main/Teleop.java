@@ -31,8 +31,6 @@ public class Teleop extends OpMode
 
     Robot_Mode mode;
 
-    private CRServo servo1;
-    private CRServo servo2;
 
     @Override
     public void init()
@@ -66,8 +64,18 @@ public class Teleop extends OpMode
 
         drivetrain.setPowers(frontLeftPower,frontRightPower,backLeftPower,backRightPower);
 
-        servo1.setPower(1);
-        servo2.setPower(1);
+        if(gamepad1.a){
+          claw.suck();
+        }
+
+        else if(gamepad1.b){
+          claw.spit();
+        }
+
+        else {
+          claw.stop();
+        }
+
 
     }
 
