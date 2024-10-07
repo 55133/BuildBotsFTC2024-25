@@ -50,6 +50,7 @@ public class Teleop extends OpMode
     public void loop()
     {
         mode = Robot_Mode.TELEOP_RUNNING;
+        telemetry.addData("Robot Mode: ", mode);
         telemetry.update();
 
         double y = -gamepad1.left_stick_y;
