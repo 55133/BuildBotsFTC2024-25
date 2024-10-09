@@ -58,7 +58,7 @@ public class Teleop extends OpMode
         double rx = gamepad1.right_stick_x;
 
         double denominator = Math.max(Math.abs(y) + Math.abs(x) + Math.abs(rx), 1);
-        double frontLeftPower = (y + x + rx) / denominator;
+        double frontLeftPower = (y + x + rx) / denominator; //TODO: Change the x back to pos and make these a coord plane type thing
         double backLeftPower = (y - x + rx) / denominator;
         double frontRightPower = (y - x - rx) / denominator;
         double backRightPower = (y + x - rx) / denominator;
@@ -86,3 +86,46 @@ public class Teleop extends OpMode
     }
 
 }
+
+// Broken? Operator Slide Code
+      if (gamepad2.right_bumper && flibble) {
+flibble = false;
+        if (slideStop == 1) {
+slide_pos = 0;
+slide_pos_2 = 0;
+        slide_leftAsDcMotor.setTargetPosition(slide_pos);
+          slide_rightAsDcMotor.setTargetPosition(slide_pos_2);
+          slide_leftAsDcMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+          slide_rightAsDcMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+slideStop = 0;
+        } else if (slideStop == 2) {
+slide_pos = -1107;
+slide_pos_2 = 1104;
+        slide_leftAsDcMotor.setTargetPosition(slide_pos);
+          slide_rightAsDcMotor.setTargetPosition(slide_pos_2);
+          slide_leftAsDcMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+          slide_rightAsDcMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+slideStop = 1;
+        }
+        } else {
+        }
+        if (gamepad2.left_bumper && flibble) {
+flibble = false;
+        if (slideStop == 0) {
+slide_pos = -1107;
+slide_pos_2 = 1104;
+        slide_leftAsDcMotor.setTargetPosition(slide_pos);
+          slide_rightAsDcMotor.setTargetPosition(slide_pos_2);
+          slide_leftAsDcMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+          slide_rightAsDcMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+slideStop = 1;
+        } else if (slideStop == 1) {
+slide_pos = -2000;
+slide_pos_2 = 2006;
+        slide_leftAsDcMotor.setTargetPosition(slide_pos);
+          slide_rightAsDcMotor.setTargetPosition(slide_pos_2);
+          slide_leftAsDcMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+          slide_rightAsDcMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+slideStop = 2;
+        }
+        }
