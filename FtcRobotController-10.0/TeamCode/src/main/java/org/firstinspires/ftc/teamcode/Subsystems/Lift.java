@@ -23,6 +23,8 @@ public class Lift {
     private int reference = 0;
     private int integralSum = 0;
     private int lastError = 0;
+    private int penguin = 0;
+    private int pos = 0;
 
     private static ElapsedTime timer = new ElapsedTime();
 
@@ -44,7 +46,7 @@ public class Lift {
 
     }
 
-        public void runToPosition(int pos){
+        public void runToPosition(){
 
         timer.reset();
         //slider.setTargetPosition(pos);
@@ -76,4 +78,83 @@ public class Lift {
 
     }
 
+    public int ascend() {
+
+        if (penguin = 0) {
+
+            penguin = 1;
+            pos = 1;
+        }
+        else if (penguin = 1) {
+
+
+            penguin = 2;
+            pos = 2;
+        }
+        return penguin;
+    }
+    public int descend() {
+
+        if (penguin = 1) {
+
+            penguin = 0;
+            pos = 0;
+        }
+
+        else if (penguin = 2){
+
+        penguin = 0;
+        pos = 0;
+
+        }
+        return penguin;
+    }
+
+
 }
+
+
+
+
+// Broken? Operator Slide Code
+      if (gamepad2.right_bumper && flibble) {
+flibble = false;
+        if (slideStop == 1) {
+slide_pos = 0;
+slide_pos_2 = 0;
+        slide_leftAsDcMotor.setTargetPosition(slide_pos);
+          slide_rightAsDcMotor.setTargetPosition(slide_pos_2);
+          slide_leftAsDcMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+          slide_rightAsDcMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+slideStop = 0;
+        } else if (slideStop == 2) {
+slide_pos = -1107;
+slide_pos_2 = 1104;
+        slide_leftAsDcMotor.setTargetPosition(slide_pos);
+          slide_rightAsDcMotor.setTargetPosition(slide_pos_2);
+          slide_leftAsDcMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+          slide_rightAsDcMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+slideStop = 1;
+        }
+        } else {
+        }
+        if (gamepad2.left_bumper && flibble) {
+flibble = false;
+        if (slideStop == 0) {
+slide_pos = -1107;
+slide_pos_2 = 1104;
+        slide_leftAsDcMotor.setTargetPosition(slide_pos);
+          slide_rightAsDcMotor.setTargetPosition(slide_pos_2);
+          slide_leftAsDcMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+          slide_rightAsDcMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+slideStop = 1;
+        } else if (slideStop == 1) {
+slide_pos = -2000;
+slide_pos_2 = 2006;
+        slide_leftAsDcMotor.setTargetPosition(slide_pos);
+          slide_rightAsDcMotor.setTargetPosition(slide_pos_2);
+          slide_leftAsDcMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+          slide_rightAsDcMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+slideStop = 2;
+        }
+        }

@@ -77,7 +77,17 @@ public class Teleop extends OpMode
           claw.stop();
         }
 
+        if (gamepad1.y){
 
+         lift.ascend()
+        }
+
+        else if (gamepad1.x){
+
+            lift.descend()
+        }
+
+        lift.runToPosition();
     }
 
     @Override
@@ -87,45 +97,3 @@ public class Teleop extends OpMode
 
 }
 
-// Broken? Operator Slide Code
-      if (gamepad2.right_bumper && flibble) {
-flibble = false;
-        if (slideStop == 1) {
-slide_pos = 0;
-slide_pos_2 = 0;
-        slide_leftAsDcMotor.setTargetPosition(slide_pos);
-          slide_rightAsDcMotor.setTargetPosition(slide_pos_2);
-          slide_leftAsDcMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-          slide_rightAsDcMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-slideStop = 0;
-        } else if (slideStop == 2) {
-slide_pos = -1107;
-slide_pos_2 = 1104;
-        slide_leftAsDcMotor.setTargetPosition(slide_pos);
-          slide_rightAsDcMotor.setTargetPosition(slide_pos_2);
-          slide_leftAsDcMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-          slide_rightAsDcMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-slideStop = 1;
-        }
-        } else {
-        }
-        if (gamepad2.left_bumper && flibble) {
-flibble = false;
-        if (slideStop == 0) {
-slide_pos = -1107;
-slide_pos_2 = 1104;
-        slide_leftAsDcMotor.setTargetPosition(slide_pos);
-          slide_rightAsDcMotor.setTargetPosition(slide_pos_2);
-          slide_leftAsDcMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-          slide_rightAsDcMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-slideStop = 1;
-        } else if (slideStop == 1) {
-slide_pos = -2000;
-slide_pos_2 = 2006;
-        slide_leftAsDcMotor.setTargetPosition(slide_pos);
-          slide_rightAsDcMotor.setTargetPosition(slide_pos_2);
-          slide_leftAsDcMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-          slide_rightAsDcMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-slideStop = 2;
-        }
-        }
