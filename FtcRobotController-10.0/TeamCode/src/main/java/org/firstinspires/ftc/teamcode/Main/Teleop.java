@@ -2,6 +2,7 @@ package org.firstinspires.ftc.teamcode.Main;
 
 //import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
+import com.qualcomm.hardware.dfrobot.HuskyLens;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.robotcore.internal.system.AppUtil;
@@ -17,12 +18,17 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
+import org.firstinspires.ftc.robotcore.internal.system.Deadline;
+
+import java.util.concurrent.TimeUnit;
+
 
 //Hey, remember to rename Teleop.java to TeleOp.java if anything gets weird
 
 @TeleOp
 public class Teleop extends OpMode
 {
+
     Claw claw;
     Drivetrain drivetrain;
     Hinge hinge;
@@ -30,6 +36,10 @@ public class Teleop extends OpMode
     System system;
 
     Robot_Mode mode;
+
+    private final int READ_PERIOD = 1;
+
+    private HuskyLens huskyLens;
 
 
     @Override
@@ -41,11 +51,16 @@ public class Teleop extends OpMode
         lift = new Lift(hardwareMap, telemetry);
         system = new System(telemetry);
 
+        //    huskyLens = hardwareMap.get(HuskyLens.class, "huskylens");
+
 
         mode = Robot_Mode.TELEOP_STARTING;
         telemetry.addData("Status: ", "Initialized");
         telemetry.addData("Robot Mode: ", mode);
     }
+
+    Deadline rateLimit = new Deadline(READ_PERIOD, TimeUnit.SECONDS);
+
     @Override
     public void loop()
     {
@@ -65,34 +80,38 @@ public class Teleop extends OpMode
 
         drivetrain.setPowers(frontLeftPower,frontRightPower,backLeftPower,backRightPower);
 
-        if(gamepad1.a){
-          claw.suck();
+        if(gamepad1.left_trigger > 0.05){
+            claw.suck(gamepad1.left_trigger * 0.3);
+        } else if(gamepad1.right_trigger > 0.05){
+            claw.spit(gamepad1.right_trigger);
+        } else {
+            claw.stop();
         }
 
-        else if(gamepad1.b){
-          claw.spit();
+        if (gamepad1.a) {
+            claw.raise(0,1);
+        } else if (gamepad1.b) {
+            claw.lower(0,1);
+        } else {
+            claw.hingeStop();
         }
 
-        else {
-          claw.stop();
-        }
-
-        if (gamepad1.y){
-
-         lift.ascend()
-        }
-
-        else if (gamepad1.x){
-
-            lift.descend()
+      /*  if (gamepad1.y){
+         lift.ascend();
+        } else if (gamepad1.x){
+            lift.descend();
         }
 
         lift.runToPosition();
+
+        if (gamepad1.x) {
+            //TODO: Wrist automatic rotation using huskylens
+        } */
     }
 
     @Override
     public void stop() {
-    mode = Robot_Mode.DISABLED;
+        mode = Robot_Mode.DISABLED;
     }
 
 }
