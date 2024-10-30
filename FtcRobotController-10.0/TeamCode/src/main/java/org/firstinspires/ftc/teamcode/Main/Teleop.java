@@ -47,7 +47,6 @@ public class Teleop extends OpMode
     {
         claw = new Claw(hardwareMap);
         drivetrain = new Drivetrain(hardwareMap, telemetry);
-        hinge = new Hinge(hardwareMap);
         lift = new Lift(hardwareMap, telemetry);
         system = new System(telemetry);
 
